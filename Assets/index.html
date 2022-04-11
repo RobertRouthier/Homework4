@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Start Page</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="score"><a href="./score.html">Scores</a></div>
+    <div class="time">Time Left:<span id="timer">0</span></div>
+
+    <section class="quiz">
+        <div id="quiz-begin" class="begin">
+            <h1>Coding Test</h1>
+                <p>
+                    Answer the questions below before time runs out. Your scores will be tracked. 
+                    Do you have what it takes to be the champion?
+                </p>
+            <button id="start-btn">Start</button>
+        </div>
+        <div id="questions" class="hidden">
+            <h2 id="question-name"></h2>
+            <div id="options" class="options"></div>
+
+        </div>
+        <div id="finish" class="hidden">
+            <p>Great job, your score is<span id="score">!</span></p>
+            <p>
+                Enter name: <input type="text" id="name" max="10"/>
+                <button id="submit-btn">Submit</button>
+            </p>
+        </div>
+
+        <div id="grade" class="grade-hide"></div>
+
+    </section>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    <script src="script.js"></script>
+</body>
+</html>
