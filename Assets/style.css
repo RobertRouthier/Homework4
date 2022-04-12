@@ -1,0 +1,67 @@
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: x-large;
+    background-color: grey;
+    color: blueviolet;
+}
+
+a{
+    text-decoration: none;
+    cursor: grab;
+}
+
+.time{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.quiz{
+    margin: 50px auto;
+    max-width: 800px;
+}
+
+.begin{
+    text-align: center;
+    
+}
+    
+button{
+display: inline-block;
+background-color: grey;
+color: blueviolet;
+border-radius: 8px;
+font-size: large;
+cursor: grab;
+padding: 8px;
+}
+
+.options button{
+display: grid;
+}
+
+input[type="text"]{
+
+    background-color: grey;
+    color: blueviolet;
+    font-size: medium;
+
+}
+
+.hidden{
+    display: none;
+}
+
+
+
+.grade{
+   
+}
+
+ol{
+
+}
+
+li{
+    list-style: inside;
+}
