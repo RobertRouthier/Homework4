@@ -19,13 +19,17 @@ var gradeEl = document.getElementById("grade")
 
 var buttonEl = document.getElementById("start-btn")
 
-buttonEl.onclick = function(){
+buttonEl.addEventListener('click', function(){
     console.log("We are starting")
     questionsEl.classList.remove("hidden")
     startBtn.classList.add("hidden")
     createQuestionEl()
+    timerEl = '60';
+    timerEl.textContent = timeEl;
+    timeEl = setInterval(timeEl, 1000)
+    timeEl--;
     
-}
+})
 
 
 
@@ -35,13 +39,14 @@ function startGame(){
     var quizBegin = document.getElementById("quiz-begin");
     quizBegin.setAttribute("class", "hidden")
     optionsEl.removeAttribute("class")
-    timerEl.textContent = time;
-    timeEl = setInterval(clock, 1000)
     
     
-nextQuestion()
+    nextQuestion()
 }
 
+function timerStart(){
+    
+}
 
 //Setting up questions for quiz
 var questionStrings = [
@@ -94,8 +99,11 @@ function createQuestionEl(){
     console.log(divEl)
     questionsEl.innerHTML = ''
     questionsEl.appendChild(divEl)
+    
 
 }
+
+
 
 //switching question logic
 function nextQuestion(){
