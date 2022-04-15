@@ -1,11 +1,12 @@
 //This is setting up the javascript logic
 var questionIndex = 0;
-var time = questions.lenth * 10;
-var timeEl;
+
+
 
 var questionsEl = document.getElementById("questions")
 
-var timerEl = document.getElementById("timer")
+var timerEl = document.getElementById("#timer")
+var timer = 60;
 
 var optionsEl = document.getElementById("options")
 
@@ -23,13 +24,24 @@ buttonEl.addEventListener('click', function(){
     console.log("We are starting")
     questionsEl.classList.remove("hidden")
     startBtn.classList.add("hidden")
-    createQuestionEl()
-    timerEl = '60';
-    timerEl.textContent = timeEl;
-    timeEl = setInterval(timeEl, 1000)
-    timeEl--;
+    function count(){
+        var timer = 60;
+        setInterval(function(count){
+        timer--;
+        if (timer >=0){
+            timerEl = document.getElementById('timer')
+            timerEl.innerHTML = timer;
+        }
+        if (counter === 0){
+            alert('You are out of time')
+            clearInterval(timer)
+        }
+
+        })
+        }
     
-})
+    createQuestionEl()
+}
 
 
 
