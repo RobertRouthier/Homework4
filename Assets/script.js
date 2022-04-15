@@ -62,17 +62,8 @@ var questionStrings = [
     }
 ];
 
-// <div id="questions" class="hidden">
-//<h2 id="question-name"></h2>
-/*<div id="options" class="options"></div>
-<h3>What is my favorite food</h3>
-<button>Thai</button>
-<button>Chinese</button>
-<button>Pizza</button>
-<button>Burger</button>
 
-</div>//*/
-
+//setting logic for questions to run
 function createQuestionEl(){
     var currentQuestion = questionStrings[questionIndex]
     var divEl = document.createElement("div")
@@ -106,7 +97,7 @@ function createQuestionEl(){
 
 }
 
-//switching question logiv
+//switching question logic
 function nextQuestion(){
 var currentQuestion = questions[questionIndex]
 var questionName = document.getElementById("question-name")
@@ -130,4 +121,8 @@ currentQuestion.options.foreach(function(choice, i) {
 function selectAnswer(){
 
     
+}
+
+function quizEnd(){
+
 }
