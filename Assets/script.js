@@ -23,25 +23,9 @@ var buttonEl = document.getElementById("start-btn")
 buttonEl.addEventListener('click', function(){
     console.log("We are starting")
     questionsEl.classList.remove("hidden")
-    startBtn.classList.add("hidden")
-    function count(){
-        var timer = 60;
-        setInterval(function(count){
-        timer--;
-        if (timer >=0){
-            timerEl = document.getElementById('timer')
-            timerEl.innerHTML = timer;
-        }
-        if (counter === 0){
-            alert('You are out of time')
-            clearInterval(timer)
-        }
-
-        })
-        }
-    
+    startBtn.classList.add("hidden") 
     createQuestionEl()
-}
+})
 
 
 
