@@ -5,8 +5,10 @@ var questionIndex = 0;
 
 var questionsEl = document.getElementById("questions")
 
-var timerEl = document.getElementById("#timer")
-var timer = 60;
+var timerEl = document.getElementById("timer")
+var timer = 60
+var timerId;
+
 
 var optionsEl = document.getElementById("options")
 
@@ -20,14 +22,14 @@ var gradeEl = document.getElementById("grade")
 
 var buttonEl = document.getElementById("start-btn")
 
+//Click event
 buttonEl.addEventListener('click', function(){
-    console.log("We are starting")
+   console.log("We are starting")
     questionsEl.classList.remove("hidden")
     startBtn.classList.add("hidden") 
     createQuestionEl()
+    startGame()
 })
-
-
 
 
 //Starting function, removing and adding the hide class to objects
@@ -37,12 +39,21 @@ function startGame(){
     optionsEl.removeAttribute("class")
     
     
-    nextQuestion()
+    timerId = setInterval(clockTick, 1000)
+    timerEl.textContent = timer;
+    createQuestionEl()
 }
 
-function timerStart(){
-    
-}
+function clockTick() {
+    // update time
+    timer--;
+    timerEl.textContent = timer;
+  
+    // check if user ran out of time
+    if (timer <= 0) {
+      quizEnd();
+    }
+  }
 
 //Setting up questions for quiz
 var questionStrings = [
@@ -86,6 +97,7 @@ function createQuestionEl(){
             if(wrongAnswer ){
                 time -= 15
             }
+            timerEl.textContent = timer
             var userSelectingEl = this
             console.log(userSelectingEl.innerHTML)
         }
@@ -95,38 +107,14 @@ function createQuestionEl(){
     console.log(divEl)
     questionsEl.innerHTML = ''
     questionsEl.appendChild(divEl)
+   
     
 
 }
 
-
-
-//switching question logic
-function nextQuestion(){
-var currentQuestion = questions[questionIndex]
-var questionName = document.getElementById("question-name")
-nameEl.textContent = currentQuestion.name;
-
-optionsEl.innerHTML = "";
-
-currentQuestion.options.foreach(function(choice, i) {
-    var choice = document.createElement("button");
-    choice.setAttribute("class", "choice");
-    choice.setAttribute("value", choice);
-    choice.textContent = i + 1 + choice;
-
-    choice.onclick = optionSelect;
-    
-    optionsEl.appendChild(choice)
-
-})
-}
-
-function selectAnswer(){
-
-    
-}
 
 function quizEnd(){
-
+clearInterval(timerId)
+var endScreenEl = document.getElementById('finish')
+endScreenEl.removeAttribute('class')
 }
