@@ -90,16 +90,24 @@ function createQuestionEl(){
         buttonEl.textContent = questionAnswer
         buttonEl.onclick = function(){
             questionIndex++
-            createQuestionEl()
+            
             //check for answer
             //if answer correct move on to next question
             var wrongAnswer = ""
-            if(wrongAnswer ){
-                time -= 15
+            if(this.value !== questionStrings.answer ){
+                timer -= 15
+                window.alert('Incorrect')
+            } else{
+                window.alert('Correct')
             }
             timerEl.textContent = timer
             var userSelectingEl = this
             console.log(userSelectingEl.innerHTML)
+
+            if (questionIndex === questionStrings.length){
+                quizEnd();
+            } else {
+                createQuestionEl()}
         }
         divEl.appendChild(buttonEl)
     
@@ -108,6 +116,7 @@ function createQuestionEl(){
     questionsEl.innerHTML = ''
     questionsEl.appendChild(divEl)
    
+  
     
 
 }
@@ -117,4 +126,42 @@ function quizEnd(){
 clearInterval(timerId)
 var endScreenEl = document.getElementById('finish')
 endScreenEl.removeAttribute('class')
+
+questionsEl.setAttribute('class', 'hidden')
+
+clearInterval(timerId)
+
+var finalScoreEl = document.getElementById('score')
+    finalScoreEl.innerHTML = " " + timer + "!"
 }
+
+function saveScore(){
+    var name = nameEl.value.trim();
+
+    if (name !== ""){
+
+        
+        var currentScore = JSON.parse(window.localStorage.getItem('score')) || [];
+
+        var newScore = {
+            scores: timer,
+            names: name
+        };
+
+        currentScore.push(newScore);
+        window.localStorage.setItem('score', JSON.stringify(score));
+
+        window.location.href = "score.html";
+
+    }
+}
+
+function enterCheck(event){
+
+    if(event.key === 'Enter'){
+        saveScore()
+    }
+}
+
+submitBtn.onclick = saveScore;
+nameEl.onkeyup = enterCheck;
