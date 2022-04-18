@@ -141,7 +141,7 @@ function saveScore(){
     if (name !== ""){
 
         
-        var currentScore = JSON.parse(window.localStorage.getItem('highscore')) || [];
+        var currentScore = JSON.parse(window.localStorage.getItem('currentScore')) || [];
 
         var newScore = {
             scores: timer,
@@ -149,7 +149,7 @@ function saveScore(){
         };
 
         currentScore.push(newScore);
-        window.localStorage.setItem('highscore', JSON.stringify(highscore));
+        window.localStorage.setItem('currentScore', JSON.stringify(currentScore));
 
         window.location.href = "score.html";
 
@@ -167,7 +167,7 @@ submitBtn.onclick = saveScore;
 nameEl.onkeyup = enterCheck;
 
 function postScores(){
-    var highscore = JSON.parse(window.localStorage.getItem('highscore')) || [];
+    var highscore = JSON.parse(window.localStorage.getItem('currentScore')) || [];
 
     //score.sort(function(a, b){
        // return b.score - a.score;
@@ -186,7 +186,7 @@ var clear = document.getElementById('clear')
 
 function clearScore() {
 
-    window.localStorage.removeItem('highscore');
+    window.localStorage.removeItem('currentScore');
     window.location.reload()
 }
 
