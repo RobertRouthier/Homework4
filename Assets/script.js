@@ -158,10 +158,36 @@ function saveScore(){
 
 function enterCheck(event){
 
-    if(event.key === 'Enter'){
+    if(event.key === 'click'){
         saveScore()
     }
 }
 
 submitBtn.onclick = saveScore;
 nameEl.onkeyup = enterCheck;
+
+function postScores(){
+    var highscore = JSON.parse(window.localStorage.getItem('score')) || [];
+
+    highscore.sort(function(a, b){
+        return b.score - a.score;
+    })
+
+    highscore.forEach(function(scores){
+        var list = document.createElement('li');
+        list.textContent = score.name + " - " +score.score
+
+        var olEl = document.getElementById('highscore')
+        olEl.appendChild(list);
+    })
+}
+
+function clearScore() {
+
+    window.localStorage.removeItem('highscore');
+    window.location.reload()
+}
+
+document.getElementById('clear').onclick = clearScore;
+
+postScores()
