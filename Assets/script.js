@@ -169,9 +169,9 @@ nameEl.onkeyup = enterCheck;
 function postScores(){
     var highscore = JSON.parse(window.localStorage.getItem('currentScore')) || [];
 
-    //score.sort(function(a, b){
-       // return b.score - a.score;
-   // })
+   // score.sort(function(a, b){
+     //return b.score - a.score;
+   //})
 
     highscore.forEach(function(score){
         var list = document.createElement('li');
