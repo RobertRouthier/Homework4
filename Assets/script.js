@@ -141,15 +141,15 @@ function saveScore(){
     if (name !== ""){
 
         
-        var currentScore = JSON.parse(window.localStorage.getItem('score')) || [];
+        var currentScore = JSON.parse(window.localStorage.getItem('highscore')) || [];
 
         var newScore = {
             scores: timer,
-            names: name
+            names: name,
         };
 
-        highscore.push(newScore);
-        window.localStorage.setItem('score', JSON.stringify(score));
+        currentScore.push(newScore);
+        window.localStorage.setItem('highscore', JSON.stringify(highscore));
 
         window.location.href = "score.html";
 
@@ -167,15 +167,15 @@ submitBtn.onclick = saveScore;
 nameEl.onkeyup = enterCheck;
 
 function postScores(){
-    var highscore = JSON.parse(window.localStorage.getItem('score')) || [];
+    var highscore = JSON.parse(window.localStorage.getItem('highscore')) || [];
 
-    highscore.sort(function(a, b){
-        return b.score - a.score;
-    })
+    //score.sort(function(a, b){
+       // return b.score - a.score;
+   // })
 
-    highscore.forEach(function(scores){
+    highscore.forEach(function(score){
         var list = document.createElement('li');
-        list.textContent = highscore.name + " - " + highscore.score
+        list.textContent = score.name + " - " + score.score
 
         var olEl = document.getElementById('highscore')
         olEl.appendChild(list);
@@ -190,6 +190,6 @@ function clearScore() {
     window.location.reload()
 }
 
-clear.addEventListener('click', clearScore())
+//clear.addEventListener('click', clearScore())
 
 postScores()
