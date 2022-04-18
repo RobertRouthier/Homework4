@@ -148,7 +148,7 @@ function saveScore(){
             names: name
         };
 
-        currentScore.push(newScore);
+        highscore.push(newScore);
         window.localStorage.setItem('score', JSON.stringify(score));
 
         window.location.href = "score.html";
@@ -175,12 +175,14 @@ function postScores(){
 
     highscore.forEach(function(scores){
         var list = document.createElement('li');
-        list.textContent = score.name + " - " +score.score
+        list.textContent = highscore.name + " - " + highscore.score
 
         var olEl = document.getElementById('highscore')
         olEl.appendChild(list);
     })
 }
+
+var clear = document.getElementById('clear')
 
 function clearScore() {
 
@@ -188,6 +190,6 @@ function clearScore() {
     window.location.reload()
 }
 
-document.getElementById('clear').onclick = clearScore;
+clear.addEventListener('click', clearScore())
 
 postScores()
