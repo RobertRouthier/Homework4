@@ -148,7 +148,7 @@ function saveScore(){
             names: name,
         };
 
-        currentScore.push(newScore);
+        //currentScore.push(newScore);
         window.localStorage.setItem('currentScore', JSON.stringify(currentScore));
 
         window.location.href = "score.html";
@@ -166,30 +166,3 @@ function enterCheck(event){
 submitBtn.onclick = saveScore;
 nameEl.onkeyup = enterCheck;
 
-function postScores(){
-    var highscore = JSON.parse(window.localStorage.getItem('currentScore')) || [];
-
-   // score.sort(function(a, b){
-     //return b.score - a.score;
-   //})
-
-    highscore.forEach(function(score){
-        var list = document.createElement('li');
-        list.textContent = score.name + " - " + score.score
-
-        var olEl = document.getElementById('highscore')
-        olEl.appendChild(list);
-    })
-}
-
-var clear = document.getElementById('clear')
-
-function clearScore() {
-
-    window.localStorage.removeItem('currentScore');
-    window.location.reload()
-}
-
-//clear.addEventListener('click', clearScore())
-
-postScores()
