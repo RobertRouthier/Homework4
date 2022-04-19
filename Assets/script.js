@@ -97,7 +97,8 @@ function createQuestionEl(){
             if(this.value !== questionStrings.answer ){
                 timer -= 15
                 window.alert('Incorrect')
-            } else{
+            } 
+            if(this.value === questionStrings.answer){
                 window.alert('Correct')
             }
             timerEl.textContent = timer
