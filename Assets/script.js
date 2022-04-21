@@ -94,11 +94,11 @@ function createQuestionEl(){
             //check for answer
             //if answer correct move on to next question
             var wrongAnswer = ""
-            if(this.value !== questionStrings.answer ){
+            if(this.innerHTML !== currentQuestion.answer ){
                 timer -= 15
                 window.alert('Incorrect')
             } 
-            if(this.value === questionStrings.answer){
+            if(this.innerHTML === currentQuestion.answer){
                 window.alert('Correct')
             }
             timerEl.textContent = timer
@@ -142,12 +142,14 @@ function saveScore(){
     if (name !== ""){
 
         
-        var currentScore = JSON.parse(window.localStorage.getItem('currentScore')) || [];
-
+       
+        var currentScore = JSON.parse(localStorage.getItem("currentScore")) || [];
         var newScore = {
             scores: timer,
             names: name,
         };
+
+        currentScore.push(newScore)
 
         //currentScore.push(newScore);
         window.localStorage.setItem('currentScore', JSON.stringify(currentScore));
